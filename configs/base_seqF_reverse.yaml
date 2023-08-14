@@ -1,0 +1,28 @@
+train_file: '/mnt/data/Product9D/json/train.json'
+test_file: '/mnt/data/Product9D/json/test.json'
+query_file: '/mnt/data/Product9D/json/query.json'
+gallery_file: '/mnt/data/Product9D/json/gallery.json'
+train_image_root: '/mnt/data/Product9D/train_images'
+test_image_root: '/mnt/data/Product9D/gallery_images'
+gallery_image_root: '/mnt/data/Product9D/gallery_images'
+
+vit: 'base'
+vit_grad_ckpt: False
+vit_ckpt_layer: 0
+image_size: 224
+batch_size_train: 128
+batch_size_test: 512
+
+# optimizer
+weight_decay: 0.05
+init_lr: 1e-4
+min_lr: 1e-6
+k_test: 10
+max_words: 30
+window_size: 50
+
+#CL
+max_epoch: 5
+base_mode: 'seqF'
+task: ['3C数码', '运动/户外', '母婴', '车品配件', '服饰鞋包', '美容护理', '食品/保健', '家装家饰', '家居用品']
+

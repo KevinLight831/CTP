@@ -8,7 +8,7 @@ The repository is
 
   1. A PyTorch library that provides some continual learning baseline algorithms on the vision-language continual pretraining benchmark P9D dataset.
 
-  2. PyTorch implement for ICCV23 paper of *"CTP: Towards Vision-Language Continual Pretraining via Compatible Momentum Contrast and Topology Preservation"*.
+  2. PyTorch implement for ICCV23 paper of *"[CTP: Towards Vision-Language Continual Pretraining via Compatible Momentum Contrast and Topology Preservation](https://arxiv.org/abs/2308.07146)"*.
 
 ## 🎨 Introduction 
 
@@ -25,8 +25,8 @@ We comprehensively study the characteristics and challenges of VLCP, and propose
 
 ## ⚙️ Setup and Environments
 
-*  Python 3.7.15
-*  PyTorch==1.11.0
+*  Python=3.7.15
+*  PyTorch=1.11.0
 *  Nvidia Driver Version=470.82.01 
 *  CUDA Version=11.4
 
@@ -82,7 +82,7 @@ The details of P9D dataset can be found in [this repository](https://github.com/
 
 The model weights of each method are too large. For example, each baseline method has model weights obtained from 8 tasks (2.3G*8=18.4G). As an alternative, we provide the training log of all baseline methods in the default and reversed task order. 
 
-Meanwhile, we provide the download links of CTP and CTP_ER model weights which trained in the default task order. The link of Google Driver only has the model weights of the final task, but the link of Baidu Netdisk has the model weights of each task.
+Meanwhile, we provide the download links of CTP and CTP_ER model weights which are trained in the default task order. The link to Google Driver only has the model weights of the final task, but the link to Baidu Netdisk has the model weights of each task.
 
 |     | training log | model weights|
 |:-------- |:------------:|:------------:| 
@@ -91,8 +91,8 @@ Meanwhile, we provide the download links of CTP and CTP_ER model weights which t
 
 ## :mag: Train and Evaluation
 ### **Training from Scratch:**
-1. Modify the file paths of dataset in `configs/base_seqF.yaml` to yourself path.
-2. Modify the **LOG_NAME** and **OUT_DIR** in `shell/seq_xxx.sh` to yourself storage path. `xxx` represents the name of method.
+1. Modify the file paths of the dataset in `configs/base_seqF.yaml` to your path.
+2. Modify the **LOG_NAME** and **OUT_DIR** in `shell/seq_xxx.sh` to your storage path. `xxx` represents the name of the method.
 3. Change the current path to the `shell` folder, and run the corresponding scripts `seq_xxx.sh`.
     ```
     cd /shell/
@@ -101,7 +101,7 @@ Meanwhile, we provide the download links of CTP and CTP_ER model weights which t
 4. The corresponding training log will be written in the `logger` folder.
    
 ### **Evaluation:**
-1. Modify the **LOG_NAME** and **OUT_DIR** in `eval.sh` to the storage path of trained model. 
+1. Modify the **LOG_NAME** and **OUT_DIR** in `eval.sh` to the storage path of the trained model. 
 2. Run the evaluation script `eval.sh`.
     ```
     sh eval.sh

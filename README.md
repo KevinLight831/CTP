@@ -120,7 +120,7 @@ Momentum Contrast and Topology Preservation},
 ```
 
 ## :panda_face: Contacts
-If you have any questions, please feel free to contact me: kevinlight831@gmail.com or hongguang@bjtu.edu.cn.
+If you have any questions, please feel free to contact me: zhuhongguang1103@gmail.com or hongguang@bjtu.edu.cn.
 
 ## :books: Reference
 1. Li, Junnan, et al. "[Align before Fuse: Vision and Language Representation Learning with Momentum Distillation.](https://github.com/salesforce/ALBEF)" NeurIPS. 2021.

@@ -1,6 +1,7 @@
 import argparse
 import os,sys, copy
 import ruamel.yaml as yaml
+sys.path.append("..")
 import numpy as np
 import random
 import time
@@ -21,7 +22,6 @@ import codecs
 from torch.cuda.amp import autocast as autocast
 import tensorboard_logger as tb_logger
 
-sys.path.append("..")
 sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 Eiters = 0
 

@@ -37,7 +37,7 @@ class CosineLinear(nn.Module):
 
 class CLIP_Pretrain(nn.Module):
     def __init__(self, config,                
-                 med_config = 'configs/albef_bert_chinese_config.json',  
+                 med_config = '../configs/albef_bert_chinese_config.json',  
                  image_size = 224,
                  vit = 'base',
                  vit_grad_ckpt = False,

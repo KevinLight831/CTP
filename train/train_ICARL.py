@@ -215,11 +215,8 @@ def main(args,config,industry_id_label, all_id_info, device):
                 train_list=[task_i]
                 test_list.append(task_i)
         else:
+            train_list=[task_i]
             test_list.append(task_i)
-            if config['mode']== 'bound':
-                train_list.append(task_i)
-            else:
-                train_list=[task_i]
             
         #### Dataset #### 
         print("Creating dataset")

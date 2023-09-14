@@ -318,6 +318,8 @@ class CLIP_Pretrain(nn.Module):
 
         loss_ita = (loss_i2t_md+loss_t2i_md)/2
 
+        self._dequeue_and_enqueue(image_feat_m, text_feat_m) 
+
         batch_size = image.shape[0]
         labels = torch.arange(batch_size, dtype=torch.long, device=image.device) + batch_size * dist.get_rank()
 

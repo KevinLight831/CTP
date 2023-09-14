@@ -81,7 +81,6 @@ class CLIP_Pretrain(nn.Module):
         self.temp = nn.Parameter(0.07*torch.ones([])).requires_grad_(False)  
         self.distill_temp = nn.Parameter(1.0*torch.ones([])).requires_grad_(False)
         self.mlm_probability = 0.15
-        self.momentum = 0.995
 
         self.queue_size = 1024
         self.register_buffer("image_queue", torch.randn(embed_dim, self.queue_size))
@@ -285,7 +284,7 @@ class CLIP_Pretrain(nn.Module):
         return loss_ita, loss_mlm, loss_ita_dis, loss_mlm_dis
 
         
-    def CEMA_init(self, image, caption, momentum_model):
+    def CTP_init(self, image, caption, momentum_model):
         raw_image_feat, raw_text_feat, image_embeds, image_atts, text, text_output = self.get_feature(image,caption)
         mlm_output, input_ids_new, labels_new = self.get_mlm_loss(text, image_embeds, image_atts ,image.device)
         loss_mlm = mlm_output.loss 
@@ -296,7 +295,7 @@ class CLIP_Pretrain(nn.Module):
                         [self.text_mlm_encoder,momentum_model.text_mlm_encoder],
                         [self.text_proj,momentum_model.text_proj],
                     ]
-            self._momentum_update(model_pairs, momentum=self.momentum)
+            self._momentum_update(model_pairs, momentum=0.995)
             image_feat_m, text_feat_m, image_embeds_m, image_atts_m, text_m, text_output_m = momentum_model.get_feature(image,caption) 
             image_feat_all =  image_feat_m.t()          
             text_feat_all = text_feat_m.t()
@@ -331,7 +330,7 @@ class CLIP_Pretrain(nn.Module):
         loss_ita += (loss_i2t+loss_t2i)/2
         return loss_ita, loss_mlm
 
-    def CEMA(self, image, caption, ref_model, momentum_model):
+    def CTP(self, image, caption, ref_model, momentum_model):
         raw_image_feat, raw_text_feat, image_embeds, image_atts, text, text_output = self.get_feature(image,caption)
         mlm_output, input_ids_new, labels_new = self.get_mlm_loss(text, image_embeds, image_atts ,image.device)
         loss_mlm = mlm_output.loss 
@@ -419,10 +418,10 @@ class CLIP_Pretrain(nn.Module):
             loss_ita, loss_mlm, loss_dis, loss_mlm_dis= self.LUCIR_forward(image, caption, iteration, ref_model)
             return loss_ita, loss_mlm, loss_dis, loss_mlm_dis
         elif mode == 'CTP':
-            loss_ita, loss_mlm, loss_dis, loss_mlm_dis= self.CEMA(image, caption, ref_model, momentum_model)
+            loss_ita, loss_mlm, loss_dis, loss_mlm_dis= self.CTP(image, caption, ref_model, momentum_model)
             return loss_ita, loss_mlm, loss_dis, loss_mlm_dis
         elif mode == 'CTP_init':
-            loss_ita, loss_mlm= self.CEMA_init(image, caption, momentum_model)
+            loss_ita, loss_mlm= self.CTP_init(image, caption, momentum_model)
             return loss_ita, loss_mlm 
 
     @torch.no_grad()    

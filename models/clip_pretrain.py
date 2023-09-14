@@ -297,8 +297,8 @@ class CLIP_Pretrain(nn.Module):
                     ]
             self._momentum_update(model_pairs, momentum=0.995)
             image_feat_m, text_feat_m, image_embeds_m, image_atts_m, text_m, text_output_m = momentum_model.get_feature(image,caption) 
-            image_feat_all =  image_feat_m.t()          
-            text_feat_all = text_feat_m.t()
+            image_feat_all = torch.cat([image_feat_m.t(),self.image_queue.clone().detach()],dim=1)              
+            text_feat_all = torch.cat([text_feat_m.t(),self.text_queue.clone().detach()],dim=1)
             mlm_output_m = momentum_model.text_mlm_encoder(input_ids = input_ids_new, 
                                     attention_mask = text.attention_mask,
                                     encoder_hidden_states = image_embeds_m,

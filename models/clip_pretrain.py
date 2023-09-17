@@ -330,6 +330,7 @@ class CLIP_Pretrain(nn.Module):
         loss_t2i = nn.CrossEntropyLoss()(sim_t2i/self.temp, labels)
 
         loss_ita += (loss_i2t+loss_t2i)/2
+        loss_mlm += self.distill_mlm(mlm_output.logits, mlm_output_m.logits, labels_new)
         return loss_ita, loss_mlm
 
     def CTP(self, image, caption, ref_model, momentum_model):

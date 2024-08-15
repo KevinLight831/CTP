@@ -2,7 +2,6 @@
 [![GitHub](https://img.shields.io/badge/license-MIT-green)](https://github.com/KevinLight831/CTP/blob/main/LICENSE)
 [![Python](https://img.shields.io/badge/python-3.7-blue.svg?style=flat-square&logo=python&color=3776AB&logoColor=3776AB)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/pytorch-1.11-%237732a8?style=flat-square&logo=PyTorch&color=EE4C2C)](https://pytorch.org/) 
-![visitors](https://visitor-badge.laobi.icu/badge?page_id=KevinLight831.CTP&left_color=green&right_color=red)
 
 The repository is 
 

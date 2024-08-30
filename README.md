@@ -107,7 +107,7 @@ Meanwhile, we provide the download links of CTP and CTP_ER model weights which a
     ```
 
 ## :pencil: Citation
-If this codebase is useful to you, please cite our work:
+If this codebase is useful to you, please consider citing:
 ```
 @article{zhu2023ctp,
   title={CTP: Towards Vision-Language Continual Pretraining via Compatible
